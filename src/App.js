@@ -3,7 +3,7 @@ import DrumBase from "./components/DrumBase";
 
 function App() {
   return (
-    <div className="container">
+    <div id="drum-machine" className="container">
       <Header />
       <DrumBase />
     </div>

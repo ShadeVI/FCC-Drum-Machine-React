@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-const DrumPad = ({ pad, isOn, volume }) => {
+const DrumPad = ({ pad, isOn, volume, setRunning }) => {
   const [isActive, setIsActive] = useState(false);
   const { keyTrigger, url, id } = pad;
 
   const play = useCallback(() => {
     if (isOn) {
+      setRunning(id);
       setIsActive(true);
-      const audio = document.getElementById(id);
+      const audio = document.getElementById(keyTrigger);
       audio.currentTime = 0;
       audio.volume = (volume / 100).toFixed(2);
       audio.play();
       setTimeout(() => setIsActive(false), 100);
     }
-  }, [isOn, volume, setIsActive, id]);
+  }, [isOn, volume, setIsActive, id, setRunning]);
 
   const handleKeydown = useCallback(
     (e) => {
@@ -36,13 +37,13 @@ const DrumPad = ({ pad, isOn, volume }) => {
   return (
     <div
       id="pad"
-      className={`d-flex justify-content-center align-items-center flex-wrap m-1  text-white col-3 ${
+      className={`drum-pad d-flex justify-content-center align-items-center flex-wrap m-1  text-white col-3 ${
         isActive ? "bg-warning" : "bg-dark"
       }`}
       style={{ height: "100px" }}
       onClick={() => play(id)}
     >
-      <audio id={id} src={url} />
+      <audio className="clip" id={keyTrigger} src={url} />
       {keyTrigger}
     </div>
   );
