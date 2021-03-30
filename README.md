@@ -1,6 +1,6 @@
 # RANDOM QUOTE MACHINE WITH REACTJS AND BOOTSTRAP FOR THE FREECODECAMP PROJECT
 
-Preview live at [drum machine]()
+Preview live at [drum machine](https://heuristic-tesla-ba4ac8.netlify.app/)
 
 ## Getting Started with Create React App
 
